@@ -40,18 +40,17 @@ function Show-Menu {
     if (Test-Path $subclassFile) {
         $subclasses = Get-Content -Path $subclassFile
         if ($subclasses.Count -gt 0) {
-            $shortCodes = ""
+            Write-Output "Remaining subclasses: "
             foreach ($subclass in $subclasses) {
                 switch -Regex ($subclass) {
-                    "Solar" { $shortCodes += "[Sol] " -ForegroundColor DarkYellow }
-                    "Void" { $shortCodes += "[Voi] " -ForegroundColor DarkMagenta }
-                    "Arc" { $shortCodes += "[Arc] " -ForegroundColor Cyan }
-                    "Stasis" { $shortCodes += "[Sta] " -ForegroundColor DarkBlue }
-                    "Strand" { $shortCodes += "[Str] " -ForegroundColor DarkGreen }
-                    "Prismatic" { $shortCodes += "[Pri] " -ForegroundColor Magenta }
+                    "Solar" { Write-Host "[Sol] " -ForegroundColor DarkYellow }
+                    "Void" { Write-Host "[Voi] " -ForegroundColor DarkMagenta }
+                    "Arc" { Write-Host "[Arc] " -ForegroundColor Cyan }
+                    "Stasis" { Write-Host "[Sta] " -ForegroundColor DarkBlue }
+                    "Strand" { Write-Host "[Str] " -ForegroundColor DarkGreen }
+                    "Prismatic" { Write-Host "[Pri] " -ForegroundColor Magenta }
                 }
             }
-            Write-Host "Remaining subclasses: $shortCodes"
         }
     }
 
