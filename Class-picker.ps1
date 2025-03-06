@@ -23,7 +23,15 @@ function Draw-Subclass {
     }
 
     $randomSubclass = Get-Random -InputObject $subclasses
-    Write-Output "Drawn subclass: $randomSubclass"
+
+    switch -Regex ($randomSubclass) {
+        "Solar" { Write-Host "Drawn subclass: $randomSubclass" -ForegroundColor DarkYellow }
+        "Void" { Write-Host "Drawn subclass: $randomSubclass" -ForegroundColor DarkMagenta }
+        "Arc" { Write-Host "Drawn subclass: $randomSubclass" -ForegroundColor Cyan }
+        "Stasis" { Write-Host "Drawn subclass: $randomSubclass" -ForegroundColor DarkBlue }
+        "Strand" { Write-Host "Drawn subclass: $randomSubclass" -ForegroundColor DarkGreen }
+        "Prismatic" { Write-Host "Drawn subclass: $randomSubclass" -ForegroundColor Magenta }
+    }
 
     $remainingSubclasses = $subclasses | Where-Object { $_ -ne $randomSubclass }
     Set-Content -Path $subclassFile -Value ($remainingSubclasses -join "`n")
@@ -40,17 +48,18 @@ function Show-Menu {
     if (Test-Path $subclassFile) {
         $subclasses = Get-Content -Path $subclassFile
         if ($subclasses.Count -gt 0) {
-            Write-Output "Remaining subclasses: "
+            Write-Host "Remaining subclasses: " -NoNewline
             foreach ($subclass in $subclasses) {
                 switch -Regex ($subclass) {
-                    "Solar" { Write-Host "[Sol] " -ForegroundColor DarkYellow }
-                    "Void" { Write-Host "[Voi] " -ForegroundColor DarkMagenta }
-                    "Arc" { Write-Host "[Arc] " -ForegroundColor Cyan }
-                    "Stasis" { Write-Host "[Sta] " -ForegroundColor DarkBlue }
-                    "Strand" { Write-Host "[Str] " -ForegroundColor DarkGreen }
-                    "Prismatic" { Write-Host "[Pri] " -ForegroundColor Magenta }
+                    "Solar" { Write-Host "[Sol] " -ForegroundColor DarkYellow -NoNewline }
+                    "Void" { Write-Host "[Voi] " -ForegroundColor DarkMagenta -NoNewline }
+                    "Arc" { Write-Host "[Arc] " -ForegroundColor Cyan -NoNewline }
+                    "Stasis" { Write-Host "[Sta] " -ForegroundColor DarkBlue -NoNewline }
+                    "Strand" { Write-Host "[Str] " -ForegroundColor DarkGreen -NoNewline }
+                    "Prismatic" { Write-Host "[Pri] " -ForegroundColor Magenta -NoNewline }
                 }
             }
+            Write-Host "" # To move to the next line after printing all subclasses
         }
     }
 
