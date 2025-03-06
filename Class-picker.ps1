@@ -27,18 +27,6 @@ function Draw-Subclass {
 
     $remainingSubclasses = $subclasses | Where-Object { $_ -ne $randomSubclass }
     Set-Content -Path $subclassFile -Value ($remainingSubclasses -join "`n")
-
-    Write-Output "Remaining subclasses in the pool:"
-    foreach ($subclass in $remainingSubclasses) {
-        switch -Regex ($subclass) {
-            "Solar" { Write-Host $subclass -ForegroundColor DarkYellow }
-            "Void" { Write-Host $subclass -ForegroundColor DarkMagenta }
-            "Arc" { Write-Host $subclass -ForegroundColor Cyan }
-            "Stasis" { Write-Host $subclass -ForegroundColor DarkBlue }
-            "Strand" { Write-Host $subclass -ForegroundColor DarkGreen }
-            "Prismatic" { Write-Host $subclass -ForegroundColor Magenta }
-        }
-    }
 }
 
 # Main menu
@@ -47,6 +35,25 @@ function Show-Menu {
     Write-Output "1. Draw a subclass"
     Write-Output "2. Reset the subclasses pool"
     Write-Output "3. Exit"
+
+    # Display remaining subclasses in short codes
+    if (Test-Path $subclassFile) {
+        $subclasses = Get-Content -Path $subclassFile
+        if ($subclasses.Count -gt 0) {
+            $shortCodes = ""
+            foreach ($subclass in $subclasses) {
+                switch -Regex ($subclass) {
+                    "Solar" { $shortCodes += "[Sol] " -ForegroundColor DarkYellow }
+                    "Void" { $shortCodes += "[Voi] " -ForegroundColor DarkMagenta }
+                    "Arc" { $shortCodes += "[Arc] " -ForegroundColor Cyan }
+                    "Stasis" { $shortCodes += "[Sta] " -ForegroundColor DarkBlue }
+                    "Strand" { $shortCodes += "[Str] " -ForegroundColor DarkGreen }
+                    "Prismatic" { $shortCodes += "[Pri] " -ForegroundColor Magenta }
+                }
+            }
+            Write-Host "Remaining subclasses: $shortCodes"
+        }
+    }
 
     $choice = Read-Host "Choose (1/2/3)"
 
