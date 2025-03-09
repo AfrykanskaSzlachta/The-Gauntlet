@@ -34,7 +34,7 @@ Rules regarding the allowed equipment of the Guardian during the Gauntlet:
 - Enhancing equipment only with loot from completed encounters, non exotic world drops should be ommited,
 - **Exotics**:
   - Dungeon exotic is treated as regular dungeon loot and can be used in the challenge (congrats if you got it :D).
-    - Due to the fact that exotics in The Shattered Throne and Pit of Heresy come from quests, we are introducing a rule to use an external program for drawing the chance : they can be obtained with a 1 in 20 draw (5% chance) using any third-party random generator. On a successful roll, the corresponding exotic can be taken from the collection/vault
+    - Due to the fact that exotics in The Shattered Throne, Pit of Heresy and Grasp of Avarice come from quests, we are introducing a rule to use an external program for drawing the weapon: the specific dungeon exotic can be obtained with a 1 in 20 draw (5% chance) using any third-party random generator(there is a Powershell script provided in this repo called exotic-lottery.ps1). On a successful roll, the corresponding exotic can be taken from the collection/vault and used in following dungeons
  - Exotic Engram is the only allowed world drop. Obtaining it requires a series of draws to determine the specific exotic weapon or armor from the world pool (including post-Beyond Light exotic armors - TBD).
 
 
