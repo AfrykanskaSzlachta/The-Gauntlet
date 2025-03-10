@@ -20,7 +20,7 @@ The `Class-picker.ps1` script randomly selects a subclass for the next dungeon, 
 
 ### Exotic Draw Script
 
-The `exotic_lottery.ps1` script determines if you have won the Wish-Ender from The Shattered Throne or the Xenophage from Pit of Heresy, based on a 5% chance. 
+The `exotic_lottery.ps1` script determines if you have won the Wish-Ender from The Shattered Throne, the Xenophage from Pit of Heresy or the Gjallarhorn from the Grasp of Avarice based on a 5% chance. 
 
 **Usage:**
 1. Run the script in PowerShell
